@@ -7,6 +7,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import xyz.k4czp3r.crafterinfo.Logger;
 import xyz.k4czp3r.crafterinfo.apis.WebSocketApi;
 
 import java.util.Map;
@@ -17,7 +18,7 @@ public class PlayerEvents implements Listener {
         try {
             WebSocketApi.getInstance(-1).broadcast(Map.of("playerUuid", event.getPlayer().getUniqueId().toString(), "playerName", event.getPlayer().getName(), "playerStatus", "online"));
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getInstance(null).error("Failed to broadcast player join event!");
         }
     }
 
@@ -26,7 +27,7 @@ public class PlayerEvents implements Listener {
         try {
             WebSocketApi.getInstance(-1).broadcast(Map.of("playerUuid", event.getPlayer().getUniqueId().toString(), "playerName", event.getPlayer().getName(), "playerStatus", "offline"));
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getInstance(null).error("Failed to broadcast player quit event!");
         }
     }
 
@@ -44,7 +45,7 @@ public class PlayerEvents implements Listener {
                         "playerHealth", healthAfterDamage
                 ));
             } catch (Exception e) {
-                e.printStackTrace();
+                Logger.getInstance(null).error("Failed to broadcast player entity damage event!");
             }
         }
     }
@@ -63,7 +64,7 @@ public class PlayerEvents implements Listener {
                         "playerHealth", healthAfterRegain
                 ));
             } catch (Exception e) {
-                e.printStackTrace();
+                Logger.getInstance(null).error("Failed to broadcast entity regain health event!");
             }
         }
     }

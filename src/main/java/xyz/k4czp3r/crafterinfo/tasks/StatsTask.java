@@ -3,6 +3,7 @@ package xyz.k4czp3r.crafterinfo.tasks;
 import org.bukkit.Bukkit;
 import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
+import xyz.k4czp3r.crafterinfo.Logger;
 import xyz.k4czp3r.crafterinfo.apis.WebSocketApi;
 
 import java.util.Arrays;
@@ -45,7 +46,7 @@ public class StatsTask implements Runnable {
         try {
             WebSocketApi.getInstance(-1).broadcast(allStats);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getInstance(null).error("Failed to broadcast stats!");
         }
     }
 }
