@@ -35,7 +35,6 @@ public class PlayerEvents implements Listener {
     public void onEntityDamage(EntityDamageEvent event) {
         if (event.getEntity() instanceof Player player) {
             double healthAfterDamage = player.getHealth() - event.getFinalDamage();
-            System.out.println("Player's health after damage: " + healthAfterDamage);
 
             try {
                 WebSocketApi.getInstance(-1).broadcast(Map.of("type","event_dmg","data", Map.of(
@@ -54,7 +53,6 @@ public class PlayerEvents implements Listener {
     public void onEntityRegainHealth(EntityRegainHealthEvent event) {
         if (event.getEntity() instanceof Player player) {
             double healthAfterRegain = player.getHealth() + event.getAmount();
-            System.out.println("Player's health after regain: " + healthAfterRegain);
 
             try {
                 WebSocketApi.getInstance(-1).broadcast(Map.of("type", "event_dmg","data",Map.of(
