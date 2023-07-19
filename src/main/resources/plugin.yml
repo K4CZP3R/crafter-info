@@ -2,8 +2,8 @@ main: ${PACKAGE}.${NAME}
 name: ${NAME}
 version: "${VERSION}"
 api-version: "1.16"
-author: AUTHOR
-description: DESCRIPTION
+author: K4CZP3R
+description: Minecraft Player tracker
 commands:
   ex:
     description: Base command for EXAMPLE
