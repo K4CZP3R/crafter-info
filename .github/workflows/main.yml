@@ -139,13 +139,13 @@ jobs:
         if: github.ref_name == 'main'
         run: |
           echo "RELEASE_TYPE=snapshot" >> $GITHUB_ENV
-          echo "RELEASE_ADDR=https://github.com/CrimsonWarpedcraft/plugin-template/actions/runs/${{ github.run_id }}" >> $GITHUB_ENV
+          echo "RELEASE_ADDR=https://github.com/K4CZP3R/crafter-info/actions/runs/${{ github.run_id }}" >> $GITHUB_ENV
 
       - name: Set release environment
         if: github.ref_type == 'tag'
         run: |
           echo "RELEASE_TYPE=release" >> $GITHUB_ENV
-          echo "RELEASE_ADDR=https://github.com/CrimsonWarpedcraft/plugin-template/releases/tag/${{ github.ref_name }}" >> $GITHUB_ENV
+          echo "RELEASE_ADDR=https://github.com/K4CZP3R/crafter-info/releases/tag/${{ github.ref_name }}" >> $GITHUB_ENV
 
       - name: Notify on success
         if: needs.build.result == 'success' && needs.test.result == 'success' && (needs.release.result == 'success' || github.event_name == 'schedule')
@@ -154,9 +154,9 @@ jobs:
           webhook_id: ${{ secrets.DISCORD_WEBHOOK_ID }}
           webhook_token: ${{ secrets.DISCORD_WEBHOOK_TOKEN }}
           color: "#00FF00"
-          username: "ExamplePlugin Release Bot"
+          username: "CrafterInfo Release Bot"
           message: >
-            An ExamplePlugin ${{ env.RELEASE_TYPE }} was deployed:
+            An CrafterInfo ${{ env.RELEASE_TYPE }} was deployed:
             ${{ env.RELEASE_ADDR }}
 
       - name: Notify on failure
@@ -166,7 +166,7 @@ jobs:
           webhook_id: ${{ secrets.DISCORD_WEBHOOK_ID }}
           webhook_token: ${{ secrets.DISCORD_WEBHOOK_TOKEN }}
           color: "#FF0000"
-          username: "ExamplePlugin Release Bot"
+          username: "CrafterInfo Release Bot"
           message: >
-            An ExamplePlugin ${{ env.RELEASE_TYPE }} failed:
-            https://github.com/CrimsonWarpedcraft/plugin-template/actions/runs/${{ github.run_id }}
+            An CrafterInfo ${{ env.RELEASE_TYPE }} failed:
+            https://github.com/K4CZP3R/crafter-info/actions/runs/${{ github.run_id }}
