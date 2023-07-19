@@ -1,6 +1,7 @@
-package com.crimsonwarpedcraft.exampleplugin;
+package xyz.k4czp3r.crafterinfo;
 
 import io.papermc.lib.PaperLib;
+//import net.kyori.adventure.text.Component;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
@@ -9,7 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  *
  * @author Copyright (c) Levi Muniz. All Rights Reserved.
  */
-public class ExamplePlugin extends JavaPlugin {
+public class CrafterInfo extends JavaPlugin {
 
   @Override
   public void onEnable() {
