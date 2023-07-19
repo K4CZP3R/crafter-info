@@ -43,8 +43,12 @@ public class StatsTask implements Runnable {
 
         }
 
+        if(allStats.isEmpty()) {
+            return;
+        }
+
         try {
-            WebSocketApi.getInstance(-1).broadcast(allStats);
+            WebSocketApi.getInstance(-1).broadcast(Map.of("type","stats","data",allStats));
         } catch (Exception e) {
             Logger.getInstance(null).error("Failed to broadcast stats!");
         }

@@ -16,7 +16,7 @@ public class PlayerEvents implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         try {
-            WebSocketApi.getInstance(-1).broadcast(Map.of("playerUuid", event.getPlayer().getUniqueId().toString(), "playerName", event.getPlayer().getName(), "playerStatus", "online"));
+            WebSocketApi.getInstance(-1).broadcast(Map.of("type","event_status", "data", Map.of("playerUuid", event.getPlayer().getUniqueId().toString(), "playerName", event.getPlayer().getName(), "playerStatus", "online")));
         } catch (Exception e) {
             Logger.getInstance(null).error("Failed to broadcast player join event!");
         }
@@ -25,7 +25,7 @@ public class PlayerEvents implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         try {
-            WebSocketApi.getInstance(-1).broadcast(Map.of("playerUuid", event.getPlayer().getUniqueId().toString(), "playerName", event.getPlayer().getName(), "playerStatus", "offline"));
+            WebSocketApi.getInstance(-1).broadcast(Map.of("type", "event_status", "data", Map.of("playerUuid", event.getPlayer().getUniqueId().toString(), "playerName", event.getPlayer().getName(), "playerStatus", "offline")));
         } catch (Exception e) {
             Logger.getInstance(null).error("Failed to broadcast player quit event!");
         }
@@ -38,12 +38,12 @@ public class PlayerEvents implements Listener {
             System.out.println("Player's health after damage: " + healthAfterDamage);
 
             try {
-                WebSocketApi.getInstance(-1).broadcast(Map.of(
+                WebSocketApi.getInstance(-1).broadcast(Map.of("type","event_dmg","data", Map.of(
                         "playerUuid", player.getUniqueId().toString(),
                         "playerName", player.getName(),
                         "playerStatus", "healthChange",
                         "playerHealth", healthAfterDamage
-                ));
+                )));
             } catch (Exception e) {
                 Logger.getInstance(null).error("Failed to broadcast player entity damage event!");
             }
@@ -57,12 +57,12 @@ public class PlayerEvents implements Listener {
             System.out.println("Player's health after regain: " + healthAfterRegain);
 
             try {
-                WebSocketApi.getInstance(-1).broadcast(Map.of(
+                WebSocketApi.getInstance(-1).broadcast(Map.of("type", "event_dmg","data",Map.of(
                         "playerUuid", player.getUniqueId().toString(),
                         "playerName", player.getName(),
                         "playerStatus", "healthChange",
                         "playerHealth", healthAfterRegain
-                ));
+                )));
             } catch (Exception e) {
                 Logger.getInstance(null).error("Failed to broadcast entity regain health event!");
             }
