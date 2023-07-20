@@ -3,6 +3,7 @@ package xyz.k4czp3r.crafterinfo;
 import org.bukkit.plugin.java.JavaPlugin;
 import xyz.k4czp3r.crafterinfo.apis.WebSocketApi;
 import xyz.k4czp3r.crafterinfo.events.PlayerEvents;
+import xyz.k4czp3r.crafterinfo.tasks.AliveTask;
 import xyz.k4czp3r.crafterinfo.tasks.StatsTask;
 import xyz.k4czp3r.crafterinfo.utils.ConfigUtils;
 import xyz.k4czp3r.crafterinfo.utils.SingletonUtils;
@@ -34,6 +35,10 @@ public class CrafterInfo extends JavaPlugin {
             0,
             20L * ConfigUtils.getStatsTaskInterval(this)
         );
+
+    getServer().getScheduler().scheduleSyncRepeatingTask(
+        this, new AliveTask(), 0, 20L * 60
+    );
 
     try {
 

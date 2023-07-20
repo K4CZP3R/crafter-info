@@ -47,7 +47,6 @@ public class StatsTask implements Runnable {
       HashMap<String, Integer> stats = getStatistics(player);
       allStats.put(player.getUniqueId().toString(),
           Map.of("playerName", player.getName(), "playerStats", stats));
-
     }
 
     if (allStats.isEmpty()) {
