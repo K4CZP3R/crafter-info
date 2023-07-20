@@ -6,6 +6,9 @@ import xyz.k4czp3r.crafterinfo.Logger;
 import xyz.k4czp3r.crafterinfo.apis.WebSocketApi;
 import xyz.k4czp3r.crafterinfo.utils.SingletonUtils;
 
+/**
+ * Repeatable task to broadcast alive message using WebSocket.
+ */
 public class AliveTask implements Runnable {
 
   @Override
